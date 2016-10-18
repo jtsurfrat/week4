@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Simple CRUD App</title>
+    <!--  import script files-->
+    <!-- <script src="/main.js"type="text/javascript"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"type="text/javascript">
+    </script>
+
+    <script src="main.js"type="text/javascript"></script>
+
+
+
   </head>
   <body>
     <h1>Simple CRUD App</h1>
@@ -15,6 +24,37 @@
       <input type="text" placeholder="authors' quote"name="quote" value="">
       <button type="submit" name="button">Submit</button>
     </form>
+    <div class="">
+        <p>
+            <%= data.name %>
+            <ul>
+                <% for( var i = 0;i < data.list.length; i++) { %>
+                    <li><%= data.list[i] %></li>
+                <% } %>
+            </ul>
+        </p>
+    </div>
+    <div class="">
+        <h3>Produc list</h3>
+        <% for (var i = 0; i < data.productList.length; i++) { %>
+            <div class="">
+                <b>Name:</b> <%= data.productList [i].name %><br>
+                <b>description:</b> <%= data.productList [i].description %> <br>
+                <b>Price:</b> <%= data.productList[i].price %><br>
+            </div>
+        <% } %>
+    </div>
 
+    <div class="">
+        <h2>Replace last quote written by Master Yoda with a quote written
+            Darth vader
+        </h2>
+        <button id="update">Darth Vader invades</button>
+    </div>
+    <div class="">
+        <h2>Delete Darth Vaders first quote
+        </h2>
+        <button id="delete">Delete first Darth Vader quote</button>
+    </div>
   </body>
 </html>

@@ -51,6 +51,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //Create a simple route will process the request
 
+// Set the HTML rendering template engine that express should use;
+app.set('view engine', 'ejs');
+
+//tell express where public static content is at
+app.use(express.static('public'));
+
 app.listen(3000, function() {
   console.log('- My app server is runing on port 3000')
 })
@@ -60,8 +66,39 @@ app.listen(3000, function() {
 app.get('/', function(request, response) {
   // console.log('- this is my request object: ', request);
   //response.send("hello World");
-  response.sendFile(__dirname + '/index.html');
+  //response.sendFile(__dirname + '/index.html');
   //       __dirname takes path we are in and use it as a base
+
+  // send the render data file
+  response.render('index.ejs', {
+      data: {
+          name: 'bob',
+          list: [
+              'sarah',
+              'jon',
+              'steve',
+              'ray'
+          ],
+          productList: [
+              {
+                  name: 'bookbag',
+                  description: 'for school',
+                  price: '5.99'
+              },
+              {
+                  name: 'computer',
+                  description: 'for doing web stuff',
+                  price: '$2,000.00'
+              },
+              {
+                  name: 'computer2',
+                  description: 'for science',
+                  price: '$1,000.00'
+              }
+
+          ]
+      }
+  })
 });
 //to start the server
 ///node app.ts
@@ -84,9 +121,11 @@ app.post('/quotes', function(request, response) {
     response.redirect('/');
   })
 
-
-
 });
+
+app.get('/:replaceQuote', function(request, response){
+
+})
 
 
 
