@@ -18,8 +18,27 @@ app.listen(3000, function() {
 //Create a simple route to access the express app.
 
 app.get('/', function(request, response) {
-  console.log('- this is my request object: ', request);
+  // console.log('- this is my request object: ', request);
+  //response.send("hello World");
+  response.sendFile(__dirname + '/index.html');
+  //       __dirname takes path we are in and use it as a base
 });
-
 //to start the server
 ///node app.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//hi
