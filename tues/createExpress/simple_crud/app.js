@@ -9,6 +9,18 @@ const express = require('express');
 
 const app = express ();
 
+//Include the middleware / plugin that will parse the body
+// data of the the request
+
+const bodyParser = require('body-parser');
+
+// NOTE: make sure to include it for use the app before the route makes use
+// of it
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+//NOTE: The urlencoded is there to the
+
 //Create a simple route will process the request
 
 app.listen(3000, function() {
@@ -25,6 +37,12 @@ app.get('/', function(request, response) {
 });
 //to start the server
 ///node app.ts
+
+// creae route to handle quote Post request
+
+app.post('/quotes', function(request, response) {
+  console.log(request.body);
+});
 
 
 
