@@ -64,41 +64,52 @@ app.listen(3000, function() {
 //Create a simple route to access the express app.
 
 app.get('/', function(request, response) {
+
+//craet a cursor to the data inside mongodb . This is
+// so you can grab data with in a range for future queries
+    var cursor = db.collection('quotes').find();
+    var list = cursor.toArray(function(error, result) {
+        response.render('index.ejs', {
+            result: result,
+            data: {
+                name: 'bob',
+                list: [
+                    'sarah',
+                    'jon',
+                    'steve',
+                    'ray'
+                ],
+                productList: [
+                    {
+                        name: 'bookbag',
+                        description: 'for school',
+                        price: '5.99'
+                    },
+                    {
+                        name: 'computer',
+                        description: 'for doing web stuff',
+                        price: '$2,000.00'
+                    },
+                    {
+                        name: 'computer2',
+                        description: 'for science',
+                        price: '$1,000.00'
+                    }
+
+                ]
+            }
+         })
+    });
   // console.log('- this is my request object: ', request);
   //response.send("hello World");
   //response.sendFile(__dirname + '/index.html');
   //       __dirname takes path we are in and use it as a base
 
   // send the render data file
-  response.render('index.ejs', {
-      data: {
-          name: 'bob',
-          list: [
-              'sarah',
-              'jon',
-              'steve',
-              'ray'
-          ],
-          productList: [
-              {
-                  name: 'bookbag',
-                  description: 'for school',
-                  price: '5.99'
-              },
-              {
-                  name: 'computer',
-                  description: 'for doing web stuff',
-                  price: '$2,000.00'
-              },
-              {
-                  name: 'computer2',
-                  description: 'for science',
-                  price: '$1,000.00'
-              }
 
-          ]
-      }
-  })
+
+
+
 });
 //to start the server
 ///node app.ts
@@ -123,9 +134,12 @@ app.post('/quotes', function(request, response) {
 
 });
 
-app.get('/:replaceQuote', function(request, response){
 
-})
+//Create a route for the '/quotes' using PUT method
+
+app.put('/quotes', function(request, response) {
+    console.log(response.body);
+});
 
 
 

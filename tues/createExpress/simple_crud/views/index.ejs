@@ -26,10 +26,13 @@
     </form>
     <div class="">
         <p>
-            <%= data.name %>
+            <!-- <%= data.name %> -->
             <ul>
-                <% for( var i = 0;i < data.list.length; i++) { %>
-                    <li><%= data.list[i] %></li>
+                <% for( var i = 0;i < result.length; i++) { %>
+                    <li>
+                        <span><%= result[i].name %></span>
+                        <span><%= result[i].quote %></span>
+                    </li>
                 <% } %>
             </ul>
         </p>
