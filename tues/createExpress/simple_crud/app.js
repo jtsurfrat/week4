@@ -139,6 +139,56 @@ app.post('/quotes', function(request, response) {
 
 app.put('/quotes', function(request, response) {
     console.log(response.body);
+
+    db.collection('quotes').findOneAndUpdate(
+        // Tell Mongo what to filter by
+        // essentially find anything with name of 'Yoda'
+        {
+            name: 'Yoda'
+        },
+        // pass a js literal object to manage how to update
+        // the found object
+        {
+            // set / replace the data on the found item.
+            $set: {
+                name: request.body.name,
+                quote: request.body.quote
+            }
+        },
+
+        //Force the quote to be inserted if a match is not found on database
+        {
+            sort: {id: -1}, // not item found because 'id ' is invalid or -1
+            upsert: true  // set 'upsert to be true' so data is insert any if nothing
+                                // is actually found
+        },
+// callback function for when the query is done
+        function(error, result){
+            if(error){
+                throw error;
+                return;
+            }
+            response.send(result);
+        }
+    )
+});
+
+// findOneDelete
+// finds first darthVader and delets
+app.delete('/quotes', function(request, response) {
+    console.log(response);
+    db.collection('quotes').findOneAndDelete(
+        {
+            name: 'Darth Vader'
+        },
+        function(error, result){
+            if(error){
+                throw error;
+                return
+            }
+            response.send(result);
+        }
+    );
 });
 
 
