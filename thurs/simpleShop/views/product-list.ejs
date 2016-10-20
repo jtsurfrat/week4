@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title">
+  </head>
+  <body>
+    <h1>Products</h1>
+
+    <ul class="product-list">
+      <% for(var i = 0; i < productList.length; i++){ %>
+        <li>
+          <div class="item">
+            <a href="/cart/add/<%= productList [i].name %>">Add to Cart</a>
+            <strong><%= productList[i].name %></strong>
+            <strong><%= productList[i].description%></strong>
+            <strong><%= productList[i].price%></strong>
+          <%} %>
+
+          </div>
+
+        </li>
+      <!-- <li>
+        <div class="item">
+          <a href="#">Add to cart</a>
+          <strong>Name:</strong> Product1<br>
+          <strong>description</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+          <strong>Price:</strong> $1.99
+        </div>
+      </li> -->
+    </ul>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- stuff -->

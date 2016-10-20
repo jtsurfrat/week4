@@ -1,0 +1,17 @@
+body {
+  background-color: #b9b9b9;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.product-list .item {
+  background-color: #fff;
+  border: 1px solid #b0b0b0;
+  padding: 20px;
+  border-radius: 10px;
+}
