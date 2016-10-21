@@ -105,6 +105,7 @@ app.get('/cart/add/:id', function(request, response){
         },
 
         {},
+        //call back function
         function(error, resultList){
             if(error){
                 throw error;
@@ -118,13 +119,18 @@ app.get('/cart/add/:id', function(request, response){
 
             if(!cart){
                 cart = {
+                    total:0,
                     itemList:[]
                 };
                 // save the cart to the session
                 request.session.cart = cart;
             }
 
+
             var item = resultList;
+
+            // add to the cart qauntiy
+            cart.total = cart.total + item.price;
 
             // Grab teh item from the result lsit
             // cart.itemList.push(item);
@@ -146,6 +152,70 @@ app.get('/cart/add/:id', function(request, response){
     // response.redirect('/product')
     //{"_id": new ObjectId(id)}
 })
+
+app.get('/cart', function(request, response){
+    //grab teh shopping cart
+    var cart = request.session.cart;
+    //create the shoppoing cart if it doenst' exits
+    if(!cart){
+        cart = {
+            total: 0,
+            itemList: []
+        }
+        //save the cart to session
+        request.session.cart = cart;
+    }
+
+    // render the cart pays
+    response.render('cart.ejs', {cart: cart});
+});
+
+//use a path to clear out the cart items
+// - get /cart/clear   clear out the cart items
+
+app.get('/clear-cart', function(request, response){
+    request.session.destroy();
+    response.redirect('/product');
+});
+
+// remove individual items from it
+app.get('/cart/remove/:index', function(request, response){
+    console.log('remove item by index', request.params.index);
+    var cart = request.session.cart;
+    var index = request.params.index;
+    var price = cart.itemList[index].price;
+
+    //[request.params.price];
+
+
+
+    //var removeItem = cart.splice(index, 1);
+
+    console.log("mycart:", cart.itemList);
+
+    var removeItem = cart.itemList.splice(index, 1);
+
+    console.log("removeItem ", removeItem);
+    cart.total  -= price;
+    //console.log('total', cartTotal);
+    //cart.total = cartTotal;
+    //cart.total = cart.total - item.price;
+
+    response.redirect('/cart');
+})
+
+// change the cart so that I can remove individual items from it
+// checkout and pay for the items in my cart
+
+
+
+
+// - summary
+// get/cart/ summary
+// get/ cart/ pays
+// get /cart/ summary
+
+
 
 
 

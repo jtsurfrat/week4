@@ -10,8 +10,9 @@ ul {
 }
 
 .product-list .item {
-  background-color: #fff;
+  background-color: #FFF8DC;
   border: 1px solid #b0b0b0;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 10px 10px 5px #888888;
 }
