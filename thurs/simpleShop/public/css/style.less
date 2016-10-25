@@ -1,50 +1,227 @@
 // Create my color pallet
 
+// Create my color pallete.
 @color-01: #ffffff;
 @color-02: #386661;
 @color-03: #38c7b4;
 @color-04: #2da89b;
 @color-05: #386656;
 
-@max-page-width: 800px;
+@max-page-width: 1200px;
 
 body {
-    background-color: @color-01;
+    background-color: @color-04;
+    margin: auto;
 }
+
+
 
 .page {
     border: 1px dotted red;
 
+    // stop box elments for soizing behon
+    // there widt when adding padding or borders
+
+    * {
+        box-sizing: border-box;
+    }
+
     .header {
+
         header {
             border: 1px dotted green;
-            max-width: @max-page-width;
             margin: auto;
+            max-width: @max-page-width;
         }
-    }
 
-    .navbar {
-        background-color: @color-04;
-    }
-    
-    nav {
+        .navbar {
+            background-color: @color-04;
+        }
 
-        border: 1px dotted blue;
-        color: @color-01;
-        margin: auto;
-        max-width: @max-page-width;
-
-        a:visited, a:link, a:active {
+        a {
+            // border: 1px dotted red;
             border-left: 2px solid @color-01;
             color: @color-01;
-            display: inline-block;
-            padding: 5px 20px 5px 20px;
+            display: table-cell;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 10px 5px 10px;
+            text-align: center;
             text-decoration: none;
             text-transform: uppercase;
+            width: 10%;
+        }
+
+        nav {
+            // border: 1px dotted blue;
+            color: @color-01;
+            margin: auto;
+            max-width: @max-page-width;
+            padding: 10px;
+
+            // Remove the left bar from the first element.
+            a:nth-child(1) {
+                border-left: none;
+            }
+        }
+
+        // Change menu to stack vertically.
+        @media (max-width: 480px) {
+            a {
+                // border: 2px dotted red;
+                border-left: none;
+                border-top: 1px solid white;
+                display: block;
+                text-align: left;
+                width: 100%;
+            }
+
+            a:nth-child(0) {
+                border-top: none;
+            }
+        }
+    }
+
+    .body {
+        background-color: @color-01;
+        margin: auto;
+    }
+
+    .grid {
+        border: 1px dotted red;
+        margin: auto;
+        max-width: @max-page-width;
+        padding: 10px;
+
+        .column {
+            border: 1px dotted green;
+            // what makes a colum cells
+            display: table-cell;
+            vertical-align: top;
+
+            // img {
+            //     height: 200px;
+            //     display: inline-block;
+            //     //align:left;
+            // }
+        }
+
+        .product {
+            border: 1px dotted blue;
+            overflow: auto;
+            padding:20px;
+
+
+            > img {
+                border: 1px dotted red;
+                width: 50%;
+                float: left;
+            }
+            .description {
+                border: 1px dotted green;
+                max-width: 50%;
+                float: left;
+                // hide description content
+                > p {
+                    display:none;
+                }
+                > h3 {
+                    font-family: arial;
+                    font-size: 32px;
+                    color: grey;
+                    text-transform: uppercase;
+                }
+            }
+
+            > p {
+                display: none;
+            }
+
+            // style buy now button
+            a {
+                background-color: @color-04;
+                border-radius: 5px;
+                color: @color-01;
+                padding: 20px;
+                text-decoration: none;
+                text-transform: uppercase;
+                display: inline-block;
+            }
+
 
         }
     }
+
 }
+
+
+
+//
+// @color-01: #ffffff;
+// @color-02: #386661;
+// @color-03: #38c7b4;
+// @color-04: #2da89b;
+// @color-05: #386656;
+//
+// @max-page-width: 800px;
+//
+// body {
+//     background-color: @color-01;
+// }
+//
+// .page {
+//     border: 1px dotted red;
+//
+//     .header {
+//         header {
+//             border: 1px dotted green;
+//             max-width: @max-page-width;
+//             margin: auto;
+//         }
+//
+//
+//         .navbar {
+//             background-color: @color-04;
+//         }
+//
+//         nav {
+//
+//             border: 1px dotted blue;
+//             color: @color-01;
+//             margin: auto;
+//             max-width: @max-page-width;
+//
+//             a:visited, a:link, a:active {
+//                 border-left: 2px solid @color-01;
+//                 color: @color-01;
+//                 display: inline-block;
+//                 padding: 5px 20px 5px 20px;
+//                 text-decoration: none;
+//                 text-transform: uppercase;
+//             }
+//             // remove the left bar from the fisrt element
+//             a;nth-child(1) {
+//                 border-left: none;
+//             }
+//         }
+//
+//         @media (max-width: 480px){
+//             a:visited, a:link, a:active {
+//                 //border-top: 2px solid @color-01;
+//                 border-left: none;
+//                 border-top: 2px solid @color-01;
+//                 display: block;
+//                 width: 100%;
+//
+//             }
+//             a:nth-child(0){
+//                 border-top: none;
+//             }
+//
+//
+//         }
+//     }
+// }
 
 
 

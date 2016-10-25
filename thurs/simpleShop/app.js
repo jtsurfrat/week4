@@ -213,6 +213,20 @@ app.get('/template', function(request, response){
     response.render('template.ejs');
 })
 
+app.get('/cart/confirm', function(request, response){
+    response.render('confirm.ejs');
+})
+
+app.get('/cart/summary', function(request, response){
+    response.render('summary.ejs');
+})
+
+app.get('/cart/pay', function(request, response){
+    response.render('pay.ejs');
+})
+
+
+
 
 // - summary
 // get/cart/ summary
