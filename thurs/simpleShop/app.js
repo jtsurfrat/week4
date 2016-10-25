@@ -207,7 +207,11 @@ app.get('/cart/remove/:index', function(request, response){
 // change the cart so that I can remove individual items from it
 // checkout and pay for the items in my cart
 
+// Styliing the base template
 
+app.get('/template', function(request, response){
+    response.render('template.ejs');
+})
 
 
 // - summary

@@ -1,0 +1,56 @@
+// Create my color pallet
+
+@color-01: #ffffff;
+@color-02: #386661;
+@color-03: #38c7b4;
+@color-04: #2da89b;
+@color-05: #386656;
+
+@max-page-width: 800px;
+
+body {
+    background-color: @color-01;
+}
+
+.page {
+    border: 1px dotted red;
+
+    .header {
+        header {
+            border: 1px dotted green;
+            max-width: @max-page-width;
+            margin: auto;
+        }
+    }
+
+    .navbar {
+        background-color: @color-04;
+    }
+    
+    nav {
+
+        border: 1px dotted blue;
+        color: @color-01;
+        margin: auto;
+        max-width: @max-page-width;
+
+        a:visited, a:link, a:active {
+            border-left: 2px solid @color-01;
+            color: @color-01;
+            display: inline-block;
+            padding: 5px 20px 5px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+//cool
